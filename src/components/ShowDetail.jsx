@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Spinner } from 'react-bootstrap';
 
 export default class ShowDetail extends Component {
   state = {
@@ -26,6 +27,14 @@ export default class ShowDetail extends Component {
     }
   };
   render() {
-    return <h1>the movie id is {this.state.movie.title}</h1>;
+    return (
+      <>
+        {this.state.isLoading || this.state.movie === 'null' ? (
+          <Spinner animation='grow' />
+        ) : (
+          <h1>the movie id is {this.state.movie.title}</h1>
+        )}
+      </>
+    );
   }
 }
