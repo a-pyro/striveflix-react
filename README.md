@@ -1,3 +1,5 @@
+# Originially started as a team project, we decided to clone and code on seprate repos for execercising purposes. You can find original project here https://github.com/aymaneabssi/clone-netflix-react
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
