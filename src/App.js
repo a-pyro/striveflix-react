@@ -160,6 +160,7 @@ export default class App extends Component {
             render={(routerProps) => (
               <Home
                 {...routerProps}
+                title='Homepage'
                 movies={this.state.movies}
                 queriedMovies={this.state.queriedElement}
               />
@@ -174,7 +175,10 @@ export default class App extends Component {
             )}
           /> */}
 
-          <Route path='/details/:id' component={ShowDetail} />
+          <Route
+            path='/details/:id'
+            render={() => <ShowDetail title='Details Page' />}
+          />
           <Footer />
         </Router>
       </>
