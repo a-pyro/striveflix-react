@@ -1,33 +1,24 @@
 import React, { useState } from 'react';
-import { Card, Col, Modal, Button } from 'react-bootstrap';
+import { Card, Col } from 'react-bootstrap';
 import { v4 as uuidv4 } from 'uuid';
+import { withRouter, Link } from 'react-router-dom';
 
-const SingleCard = ({ item }) => {
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+const SingleCard = (props) => {
+  const handleClick = () => {
+    console.log(props);
+    console.log(props.item.imdbID);
+    props.history.push(`/details/${props.item.imdbID}`);
+  };
+
   return (
     <>
-      <Col onClick={handleShow} key={uuidv4()}>
-        <Card className='my-3' style={{ width: '8rem' }}>
-          <Card.Img variant='top' src={item.Poster} />
+      <Col>
+        <Card onClick={handleClick} className='my-3' style={{ width: '8rem' }}>
+          <Card.Img variant='top' src={props.item.Poster} />
         </Card>
       </Col>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>{item.imdbID}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          Didn't have time to finish comment section but we're almost there 😁
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant='secondary' onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
     </>
   );
 };
 
-export default SingleCard;
+export default withRouter(SingleCard);

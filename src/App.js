@@ -138,7 +138,7 @@ export default class App extends Component {
             )}
           </Container>
 
-          {this.state.isLoading ? (
+          {/* {this.state.isLoading ? (
             <div className='d-flex justify-content-center align-items-center'>
               <Spinner animation='grow' variant='light' />
               <Spinner animation='grow' variant='light' />
@@ -152,8 +152,30 @@ export default class App extends Component {
               />
               <Footer />
             </div>
-          )}
-          <Route path='/details:id' component={ShowDetail} />
+          )} */}
+
+          <Route
+            path='/'
+            exact
+            render={(routerProps) => (
+              <Home
+                {...routerProps}
+                movies={this.state.movies}
+                queriedMovies={this.state.queriedElement}
+              />
+            )}
+          />
+
+          {/* <Route
+            path='/reservations'
+            exact
+            render={(routerProps) => (
+              <Reservations {...routerProps} title='Stefano' />
+            )}
+          /> */}
+
+          <Route path='/details/:id' component={ShowDetail} />
+          <Footer />
         </Router>
       </>
     );
