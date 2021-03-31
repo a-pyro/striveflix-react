@@ -2,7 +2,7 @@ import React from 'react';
 import SingleCard from './SingleCard';
 import { v4 as uuidv4 } from 'uuid';
 
-const Cards = ({ movie }) => {
+const Rows = ({ movie }) => {
   return (
     <>
       {movie.map((item) => (
@@ -12,4 +12,4 @@ const Cards = ({ movie }) => {
   );
 };
 
-export default Cards;
+export default Rows;

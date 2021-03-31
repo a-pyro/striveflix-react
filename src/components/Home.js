@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Container } from 'react-bootstrap';
 // import components
-import Cards from './Cards';
+import Rows from './Rows';
 import { v4 as uuidv4 } from 'uuid';
 import SingleCard from './SingleCard';
 
@@ -24,7 +24,7 @@ const Home = ({ movies, queriedMovies }) => {
       <Container fluid>
         {movies.map((movie) => (
           <Row key={uuidv4()} className='overflow-auto flex-nowrap'>
-            <Cards movie={movie} />
+            <Rows movie={movie} />
           </Row>
         ))}
       </Container>
@@ -39,7 +39,7 @@ const Home = ({ movies, queriedMovies }) => {
 //     <Container fluid>
 //       {movies.map((movie) => (
 //         <Row key={uuidv4()} className='overflow-auto flex-nowrap'>
-//           <Cards movie={movie} />
+//           <Rows movie={movie} />
 //         </Row>
 //       ))}
 //     </Container>

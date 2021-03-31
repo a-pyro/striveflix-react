@@ -4,7 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import ShowDetail from './components/ShowDetail';
 import { Form, Container, Alert, Spinner } from 'react-bootstrap';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 export default class App extends Component {
   state = {
@@ -115,41 +117,44 @@ export default class App extends Component {
       });
     }
   };
-
+  // Create a Route for a ShowDetail component. It should be able to receive a ID parameter from the querystring.
   render() {
     return (
       <>
-        <Header />
-        <Container fluid>
-          <Form onSubmit={this.handleSubmit}>
-            <Form.Control
-              onChange={this.handleInput}
-              className='my-3 '
-              type='text'
-              placeholder='Search For Movies and Press Enter'
-              value={this.state.query}
-            />
-          </Form>
-          {this.state.queryNotFound && (
-            <Alert variant='warning'>{this.state.queryErrorFromApi}</Alert>
-          )}
-        </Container>
+        <Router>
+          <Header />
+          <Container fluid>
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Control
+                onChange={this.handleInput}
+                className='my-3 '
+                type='text'
+                placeholder='Search For Movies and Press Enter'
+                value={this.state.query}
+              />
+            </Form>
+            {this.state.queryNotFound && (
+              <Alert variant='warning'>{this.state.queryErrorFromApi}</Alert>
+            )}
+          </Container>
 
-        {this.state.isLoading ? (
-          <div className='d-flex justify-content-center align-items-center'>
-            <Spinner animation='grow' variant='light' />
-            <Spinner animation='grow' variant='light' />
-            <Spinner animation='grow' variant='light' />
-          </div>
-        ) : (
-          <div>
-            <Home
-              movies={this.state.movies}
-              queriedMovies={this.state.queriedElement}
-            />
-            <Footer />
-          </div>
-        )}
+          {this.state.isLoading ? (
+            <div className='d-flex justify-content-center align-items-center'>
+              <Spinner animation='grow' variant='light' />
+              <Spinner animation='grow' variant='light' />
+              <Spinner animation='grow' variant='light' />
+            </div>
+          ) : (
+            <div>
+              <Home
+                movies={this.state.movies}
+                queriedMovies={this.state.queriedElement}
+              />
+              <Footer />
+            </div>
+          )}
+          <Route path='/details:id' component={ShowDetail} />
+        </Router>
       </>
     );
   }
