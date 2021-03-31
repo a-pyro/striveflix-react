@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './components/Home';
+// import Footer from './components/Footer';
+// import Header from './components/Header';
+// import ShowDetail from './components/ShowDetail';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import ShowDetail from './components/ShowDetail';
+
 import { Form, Container, Alert, Spinner } from 'react-bootstrap';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
@@ -177,7 +181,9 @@ export default class App extends Component {
 
           <Route
             path='/details/:id'
-            render={() => <ShowDetail title='Details Page' />}
+            render={(routerProps) => (
+              <ShowDetail {...routerProps} title='Details Page' />
+            )}
           />
           <Footer />
         </Router>

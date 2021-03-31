@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Spinner } from 'react-bootstrap';
+import { Spinner, Row, Col } from 'react-bootstrap';
 
 export default class ShowDetail extends Component {
   state = {
@@ -53,6 +53,7 @@ export default class ShowDetail extends Component {
       console.log(error);
     }
   };
+
   render() {
     console.log(this.state.comments);
     console.log(this.state.movie);
@@ -64,7 +65,11 @@ export default class ShowDetail extends Component {
           <h1>the movie id is {this.state.movie.title}</h1>
         )} */}
 
-        <h1>{this.state.movie?.Title ?? 'hello'}</h1>
+        {this.state.movie?.Title ?? ''}
+        <Row>
+          <Col></Col>
+          <Col></Col>
+        </Row>
       </>
     );
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../css/header.css';
 import logoSVG from '../assets/logo.svg';
+import { Link } from 'react-router-dom';
 
 export default class Header extends Component {
   render() {
@@ -25,9 +26,9 @@ export default class Header extends Component {
           <div className='collapse navbar-collapse' id='navbarSupportedContent'>
             <ul className='navbar-nav mr-auto'>
               <li className='nav-item active'>
-                <a className='nav-link' href='#home'>
+                <Link className='nav-link' to='/'>
                   Home <span className='sr-only'>(current)</span>
-                </a>
+                </Link>
               </li>
               <li className='nav-item'>
                 <a className='nav-link' href='#home'>
@@ -47,11 +48,6 @@ export default class Header extends Component {
               <li className='nav-item'>
                 <a className='nav-link' href='#home'>
                   My List
-                </a>
-              </li>
-              <li className='nav-item'>
-                <a className='nav-link' href='./backoffice/backoffice.html'>
-                  Backoffice
                 </a>
               </li>
             </ul>
