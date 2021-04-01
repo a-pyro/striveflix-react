@@ -42,15 +42,6 @@ header {
   left: 50px;
 }
 
-#header-text button {
-  opacity: 0.8;
-}
-.play-button {
-  background-color: white !important;
-  width: 120px;
-  color: black !important;
-}
-
 #header-text button:hover {
   opacity: 0.3;
 }
