@@ -12,22 +12,50 @@ export default class RegForm extends Component {
   state = {
     isValidated: false,
     fields: {
-      name: '',
-      surname: '',
-      email: '',
-      password: '',
-      birthday: '',
-      street: '',
-      city: '',
-      postalCode: null,
-      careditCard: null,
+      name: {
+        value: '',
+        isValid: false,
+      },
+      surname: {
+        value: '',
+        isValid: false,
+      },
+      email: {
+        value: '',
+        isValid: false,
+      },
+      password: {
+        value: '',
+        isValid: false,
+      },
+      birthday: {
+        value: '',
+        isValid: false,
+      },
+      street: {
+        value: '',
+        isValid: false,
+      },
+      city: {
+        value: '',
+        isValid: false,
+      },
+      postalCode: {
+        value: '',
+        isValid: false,
+      },
+      careditCard: {
+        value: '',
+        isValid: false,
+      },
     },
   };
 
   handleChange = (e) => {
-    this.setState({
-      fields: { ...this.state.fields, [e.target.name]: e.target.value },
-    });
+    const propToUpdatate = e.target.name;
+    const valueToUpdate = this.state.fields[propToUpdatate];
+    console.log(propToUpdatate);
+    console.log(valueToUpdate);
   };
   handleSubmit = (e) => {
     e.preventDefault();
@@ -39,10 +67,10 @@ export default class RegForm extends Component {
         <Form onSubmit={this.handleSubmit}>
           <Row>
             <Col>
-              <Form.Group controlId='formBasicText'>
+              <Form.Group>
                 <Form.Label>Name</Form.Label>
                 <Form.Control
-                  value={this.state.fields.name}
+                  value={this.state.fields.name.value}
                   onChange={this.handleChange}
                   type='text'
                   placeholder='Enter Name'
@@ -50,10 +78,10 @@ export default class RegForm extends Component {
                 />
               </Form.Group>
 
-              <Form.Group controlId='formBasicText'>
+              <Form.Group>
                 <Form.Label>Surname</Form.Label>
                 <Form.Control
-                  value={this.state.fields.surname}
+                  value={this.state.fields.surname.value}
                   onChange={this.handleChange}
                   type='text'
                   name='surname'
@@ -61,10 +89,10 @@ export default class RegForm extends Component {
                 />
               </Form.Group>
 
-              <Form.Group controlId='formBasicEmail'>
+              <Form.Group>
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
-                  value={this.state.fields.email}
+                  value={this.state.fields.email.value}
                   onChange={this.handleChange}
                   type='email'
                   name='email'
@@ -72,10 +100,10 @@ export default class RegForm extends Component {
                 />
               </Form.Group>
 
-              <Form.Group controlId='formBasicPassword'>
+              <Form.Group>
                 <Form.Label>Password</Form.Label>
                 <Form.Control
-                  value={this.state.fields.password}
+                  value={this.state.fields.password.value}
                   onChange={this.handleChange}
                   type='password'
                   name='password'
@@ -83,10 +111,10 @@ export default class RegForm extends Component {
                 />
               </Form.Group>
 
-              <Form.Group controlId='formBasicCheckbox'>
+              <Form.Group>
                 <Form.Label>Birthday</Form.Label>
                 <Form.Control
-                  value={this.state.fields.birthday}
+                  value={this.state.fields.birthday.value}
                   onChange={this.handleChange}
                   name='birthday'
                   type='date'
@@ -94,10 +122,10 @@ export default class RegForm extends Component {
               </Form.Group>
             </Col>
             <Col>
-              <Form.Group controlId='formBasicText'>
+              <Form.Group>
                 <Form.Label>Street address</Form.Label>
                 <Form.Control
-                  value={this.state.fields.street}
+                  value={this.state.fields.street.value}
                   onChange={this.handleChange}
                   type='text'
                   name='street'
@@ -105,10 +133,10 @@ export default class RegForm extends Component {
                 />
               </Form.Group>
 
-              <Form.Group controlId='formBasicText'>
+              <Form.Group>
                 <Form.Label>City</Form.Label>
                 <Form.Control
-                  value={this.state.fields.city}
+                  value={this.state.fields.city.value}
                   onChange={this.handleChange}
                   type='text'
                   name='city'
@@ -116,10 +144,10 @@ export default class RegForm extends Component {
                 />
               </Form.Group>
 
-              <Form.Group controlId='formBasicNumber'>
+              <Form.Group>
                 <Form.Label>Postal Code</Form.Label>
                 <Form.Control
-                  value={this.state.fields.postalCode}
+                  value={this.state.fields.postalCode.value}
                   onChange={this.handleChange}
                   type='number'
                   name='postalCode'
@@ -127,10 +155,10 @@ export default class RegForm extends Component {
                 />
               </Form.Group>
 
-              <Form.Group controlId='formBasicNumber'>
+              <Form.Group>
                 <Form.Label>Credit Card</Form.Label>
                 <Form.Control
-                  value={this.state.fields.careditCard}
+                  value={this.state.fields.careditCard.value}
                   onChange={this.handleChange}
                   type='number'
                   name='careditCard'
