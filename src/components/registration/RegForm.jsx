@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+
 const validator = require('email-validator');
 
 // validator.validate("test@email.com");
@@ -12,50 +14,32 @@ export default class RegForm extends Component {
   state = {
     isValidated: false,
     fields: {
-      name: {
-        value: '',
-        isValid: false,
-      },
-      surname: {
-        value: '',
-        isValid: false,
-      },
-      email: {
-        value: '',
-        isValid: false,
-      },
-      password: {
-        value: '',
-        isValid: false,
-      },
-      birthday: {
-        value: '',
-        isValid: false,
-      },
-      street: {
-        value: '',
-        isValid: false,
-      },
-      city: {
-        value: '',
-        isValid: false,
-      },
-      postalCode: {
-        value: '',
-        isValid: false,
-      },
-      careditCard: {
-        value: '',
-        isValid: false,
-      },
+      name: '',
+      surname: '',
+      email: '',
+      password: '',
+      birthday: '',
+      street: '',
+      city: '',
+      postalCode: '',
+      careditCard: '',
     },
   };
 
   handleChange = (e) => {
-    const propToUpdatate = e.target.name;
-    const valueToUpdate = this.state.fields[propToUpdatate];
-    console.log(propToUpdatate);
-    console.log(valueToUpdate);
+    //const propToUpdatate = e.target.name;
+    //const valueToUpdate = this.state.fields[propToUpdatate];
+    // this.setState({
+    //   ...this.state.fields,
+    //   [e.currentTarget.id]: {
+    //     ...this.state.fields[e.currentTarget.id],
+    //     value: e.currentTarget,
+    //   },
+    // });
+    this.setState({
+      ...this.state,
+      fields: { ...this.state.fields, [e.target.name]: e.target.value },
+    });
   };
   handleSubmit = (e) => {
     e.preventDefault();
@@ -70,7 +54,7 @@ export default class RegForm extends Component {
               <Form.Group>
                 <Form.Label>Name</Form.Label>
                 <Form.Control
-                  value={this.state.fields.name.value}
+                  value={this.state.fields.name}
                   onChange={this.handleChange}
                   type='text'
                   placeholder='Enter Name'
@@ -81,7 +65,7 @@ export default class RegForm extends Component {
               <Form.Group>
                 <Form.Label>Surname</Form.Label>
                 <Form.Control
-                  value={this.state.fields.surname.value}
+                  value={this.state.fields.surname}
                   onChange={this.handleChange}
                   type='text'
                   name='surname'
@@ -92,7 +76,7 @@ export default class RegForm extends Component {
               <Form.Group>
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
-                  value={this.state.fields.email.value}
+                  value={this.state.fields.email}
                   onChange={this.handleChange}
                   type='email'
                   name='email'
@@ -103,7 +87,7 @@ export default class RegForm extends Component {
               <Form.Group>
                 <Form.Label>Password</Form.Label>
                 <Form.Control
-                  value={this.state.fields.password.value}
+                  value={this.state.fields.password}
                   onChange={this.handleChange}
                   type='password'
                   name='password'
@@ -114,7 +98,7 @@ export default class RegForm extends Component {
               <Form.Group>
                 <Form.Label>Birthday</Form.Label>
                 <Form.Control
-                  value={this.state.fields.birthday.value}
+                  value={this.state.fields.birthday}
                   onChange={this.handleChange}
                   name='birthday'
                   type='date'
@@ -125,7 +109,7 @@ export default class RegForm extends Component {
               <Form.Group>
                 <Form.Label>Street address</Form.Label>
                 <Form.Control
-                  value={this.state.fields.street.value}
+                  value={this.state.fields.street}
                   onChange={this.handleChange}
                   type='text'
                   name='street'
@@ -136,7 +120,7 @@ export default class RegForm extends Component {
               <Form.Group>
                 <Form.Label>City</Form.Label>
                 <Form.Control
-                  value={this.state.fields.city.value}
+                  value={this.state.fields.city}
                   onChange={this.handleChange}
                   type='text'
                   name='city'
@@ -147,7 +131,7 @@ export default class RegForm extends Component {
               <Form.Group>
                 <Form.Label>Postal Code</Form.Label>
                 <Form.Control
-                  value={this.state.fields.postalCode.value}
+                  value={this.state.fields.postalCode}
                   onChange={this.handleChange}
                   type='number'
                   name='postalCode'
@@ -158,11 +142,12 @@ export default class RegForm extends Component {
               <Form.Group>
                 <Form.Label>Credit Card</Form.Label>
                 <Form.Control
-                  value={this.state.fields.careditCard.value}
+                  value={this.state.fields.careditCard}
                   onChange={this.handleChange}
                   type='number'
                   name='careditCard'
                   placeholder='Enter Credit Card Number'
+                  maxLength={16}
                 />
               </Form.Group>
             </Col>
