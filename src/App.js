@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './components/Home';
-// import Footer from './components/Footer';
-// import Header from './components/Header';
-// import ShowDetail from './components/ShowDetail';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import ShowDetail from './components/ShowDetail';
@@ -79,7 +76,7 @@ export default class App extends Component {
       });
     }
   };
-  // adding a little comment
+
   componentDidMount = async () => {
     // console.log('app mounted');
     const apiKey = '95717d44';
