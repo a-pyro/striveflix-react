@@ -4,13 +4,15 @@ import logoSVG from '../assets/logo.svg';
 import { Link, withRouter } from 'react-router-dom';
 
 class Header extends Component {
+  makeActive = (path) => (this.props.location === path ? 'active' : '');
+
   render() {
     return (
       <header>
         <nav className='navbar navbar-expand-lg navbar-dark fixed-top bg-transparent'>
-          <a className='navbar-brand' href='#home'>
+          <Link className='navbar-brand' to='/'>
             <img src={logoSVG} alt='netflix-logo' width='160px' height='40px' />
-          </a>
+          </Link>
           <button
             className='navbar-toggler'
             type='button'
@@ -25,12 +27,12 @@ class Header extends Component {
 
           <div className='collapse navbar-collapse' id='navbarSupportedContent'>
             <ul className='navbar-nav mr-auto'>
-              <li className='nav-item active'>
+              <li className={`nav-item` + this.makeActive('/')}>
                 <Link className='nav-link' to='/'>
                   Home <span className='sr-only'></span>
                 </Link>
               </li>
-              <li className='nav-item'>
+              <li className={`nav-item` + this.makeActive('/registration')}>
                 <Link className='nav-link' to='/registration'>
                   Registration
                 </Link>
