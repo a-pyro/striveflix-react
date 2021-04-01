@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
 import { Card, Col } from 'react-bootstrap';
-import { v4 as uuidv4 } from 'uuid';
-import { withRouter, Link } from 'react-router-dom';
+
+import { withRouter } from 'react-router-dom';
 
 const SingleCard = (props) => {
   const handleClick = () => {

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import '../css/header.css';
 import logoSVG from '../assets/logo.svg';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
-export default class Header extends Component {
+class Header extends Component {
   render() {
     return (
       <header>
@@ -27,28 +27,13 @@ export default class Header extends Component {
             <ul className='navbar-nav mr-auto'>
               <li className='nav-item active'>
                 <Link className='nav-link' to='/'>
-                  Home <span className='sr-only'>(current)</span>
+                  Home <span className='sr-only'></span>
                 </Link>
               </li>
               <li className='nav-item'>
-                <a className='nav-link' href='#home'>
-                  Series
-                </a>
-              </li>
-              <li className='nav-item'>
-                <a className='nav-link' href='#home'>
-                  Films
-                </a>
-              </li>
-              <li className='nav-item'>
-                <a className='nav-link' href='#home'>
-                  New & Popular
-                </a>
-              </li>
-              <li className='nav-item'>
-                <a className='nav-link' href='#home'>
-                  My List
-                </a>
+                <Link className='nav-link' to='/registration'>
+                  Registration
+                </Link>
               </li>
             </ul>
 
@@ -117,3 +102,5 @@ export default class Header extends Component {
     );
   }
 }
+
+export default withRouter(Header);

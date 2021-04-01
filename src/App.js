@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import ShowDetail from './components/ShowDetail';
+import RegistrationPage from './components/RegistrationPage';
 
 import { Form, Container, Alert } from 'react-bootstrap';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -199,6 +200,7 @@ export default class App extends Component {
               <ShowDetail {...routerProps} title='Details Page' />
             )}
           />
+          <Route path='/registration' component={RegistrationPage} />
           <Footer />
         </Router>
       </>
