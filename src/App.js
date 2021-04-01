@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import ShowDetail from './components/ShowDetail';
 
-import { Form, Container, Alert, Spinner } from 'react-bootstrap';
+import { Form, Container, Alert } from 'react-bootstrap';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 export default class App extends Component {
@@ -83,7 +83,12 @@ export default class App extends Component {
   componentDidMount = async () => {
     // console.log('app mounted');
     const apiKey = '95717d44';
-    const movies = ['harry potter', 'the lord of the rings', 'breaking bad'];
+    const movies = [
+      'harry potter',
+      'the lord of the rings',
+      'breaking bad',
+      'rambo',
+    ];
     const endpointAllData = `http://www.omdbapi.com/?apikey=${apiKey}&s=`;
 
     try {
@@ -96,8 +101,20 @@ export default class App extends Component {
         if (resp.ok) {
           // console.log('resp ok');
           const data = await resp.json();
-          // console.log(data.Search);
-          this.setState({ movies: [...this.state.movies, data.Search] });
+          console.log(data.Search);
+          this.setState({
+            movies: [
+              ...this.state.movies,
+              data.Search.filter((film) => film.Poster !== 'N/A').reduce(
+                (acc, cv) => {
+                  if (acc.some((el) => el.imdbID === cv.imdbID)) return acc;
+                  acc.push(cv);
+                  return acc;
+                },
+                []
+              ),
+            ],
+          });
           // console.log(this.state.movies);
           this.setState({
             ...this.state.movies,
