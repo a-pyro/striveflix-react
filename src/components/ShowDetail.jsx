@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { Spinner, Row, Col } from 'react-bootstrap';
+import {
+  ListGroup,
+  Spinner,
+  Row,
+  Col,
+  Image,
+  Container,
+} from 'react-bootstrap';
 
 export default class ShowDetail extends Component {
   state = {
@@ -38,7 +45,7 @@ export default class ShowDetail extends Component {
         {
           headers: {
             Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDUyMDNjNDg5YzI2ZjAwMTU3ZjljNDMiLCJpYXQiOjE2MTcyMDE4NjMsImV4cCI6MTYxODQxMTQ2M30.ru_9O8RdNoCPKpFG-dgtPC8cqI3OozYpyQArNhtE9yg',
+              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDUyMDNjNDg5YzI2ZjAwMTU3ZjljNDMiLCJpYXQiOjE2MjUxNDgyMDQsImV4cCI6MTYyNjM1NzgwNH0.3HhdK6t7oeXt5LpONAYiU2a_Ap043ucIpJxFfUQTVDA',
           },
         }
       );
@@ -65,11 +72,33 @@ export default class ShowDetail extends Component {
           <h1>the movie id is {this.state.movie.title}</h1>
         )} */}
 
-        {this.state.movie?.Title ?? ''}
-        <Row>
-          <Col></Col>
-          <Col></Col>
-        </Row>
+        <Container fluid className='min-vh-100'>
+          <Row className='justify-content-start'>
+            <Col className='d-flex flex-column'>
+              <h2 className='text-white'>{this.state.movie?.Title ?? ''}</h2>{' '}
+              <Image fluid alt='movie cover' src={this.state.movie?.Poster} />{' '}
+            </Col>
+            <Col className='mt-5'>
+              <h3 className='text-white'>Plot:</h3>
+              <p className='text-white'>{this.state.movie?.Plot}</p>
+              <ListGroup>
+                <ListGroup.Item>
+                  Director: {this.state.movie?.Director}
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  Imdb rating: {this.state.movie?.imdbRating}
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  Genre: {this.state.movie?.Genre}
+                </ListGroup.Item>
+                <ListGroup.Item>Year: {this.state.movie?.Year}</ListGroup.Item>
+                <ListGroup.Item>
+                  BoxOffice: {this.state.movie?.BoxOffice}
+                </ListGroup.Item>
+              </ListGroup>
+            </Col>
+          </Row>
+        </Container>
       </>
     );
   }

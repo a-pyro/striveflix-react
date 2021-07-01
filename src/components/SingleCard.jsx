@@ -11,7 +11,7 @@ const SingleCard = (props) => {
 
   return (
     <>
-      <Col>
+      <Col md={2}>
         <Card onClick={handleClick} className='my-3' style={{ width: '8rem' }}>
           <Card.Img variant='top' src={props.item.Poster} />
         </Card>

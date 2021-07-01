@@ -58,9 +58,9 @@ class Header extends Component {
                 </li>
 
                 <li className='dropdown'>
-                  <a
+                  <Link
                     className='nav-link dropdown-toggle'
-                    href='#home'
+                    to='/'
                     id='navbarDropdown'
                     role='button'
                     data-toggle='dropdown'
@@ -71,7 +71,7 @@ class Header extends Component {
                       src='https://occ-0-2835-2774.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABYnnca7HCf0z4YHtIK5R8MIGCeMyodAsxBYSBmMkYHqjSw46VWWyNQirfwxT-CkbxPkp-G84Wu-iOMwGG-r9QAs.png?r=f71'
                       alt=''
                     />
-                  </a>
+                  </Link>
                   <div
                     className='dropdown-menu'
                     aria-labelledby='navbarDropdown'

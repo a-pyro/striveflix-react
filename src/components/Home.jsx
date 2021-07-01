@@ -11,8 +11,7 @@ const Home = ({ movies, queriedMovies, title }) => {
 
   if (queriedMovies.length > 0) {
     return (
-      <Container fluid>
-        <h1>{title}</h1>
+      <Container className='min-vh-100' fluid>
         <Row>
           {queriedMovies.map((movie) => (
             <SingleCard key={uuidv4()} item={movie} />
@@ -23,8 +22,6 @@ const Home = ({ movies, queriedMovies, title }) => {
   } else {
     return (
       <Container fluid>
-        <h1>{title}</h1>
-
         {movies.map((movie) => (
           <Row key={uuidv4()} className='overflow-auto flex-nowrap'>
             <Rows movie={movie} />
